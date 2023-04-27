@@ -1,8 +1,6 @@
-# fetch-latest-release
+# fetch-latest-github-release
 
-![Latest Release](https://img.shields.io/github/v/release/thebritican/fetch-latest-release?label=Latest%20Release)
-
-A tiny GitHub action to fetch the latest GitHub release for a given repository
+A tiny GitHub action to fetch the latest GitHub Release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27.
 
 ## Inputs
 
