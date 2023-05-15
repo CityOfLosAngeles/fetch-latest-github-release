@@ -1,6 +1,8 @@
 name: Example Runs
 
-on: push
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   example:
@@ -8,19 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - id: fetch-latest-release
+      - id: fetch-latest-github-release
         uses: ./
 
       - name: print out latest release tag
         run: echo "The latest release tag is $TAG"
         env:
-          TAG: ${{ steps.fetch-latest-release.outputs.tag_name }}
+          TAG: ${{ steps.fetch-latest-github-release.outputs.tag_name }}
   customRepoExample:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - id: fetch-latest-release
+      - id: fetch-latest-github-release
         uses: ./
         with:
           github_token: ${{ github.token }}
@@ -29,4 +31,4 @@ jobs:
       - name: print out latest release tag
         run: echo "The latest release tag is $TAG"
         env:
-          TAG: ${{ steps.fetch-latest-release.outputs.tag_name }}
+          TAG: ${{ steps.fetch-latest-github-release.outputs.tag_name }}

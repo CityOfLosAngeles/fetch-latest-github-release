@@ -35,8 +35,8 @@ A tiny GitHub action to fetch the latest GitHub Release for a given repository. 
 
 ```yaml
 steps:
-  - id: fetch-latest-release
-    uses: thebritican/fetch-latest-release@v1
+  - id: fetch-latest-github-release
+    uses: cityoflosangeles/fetch-latest-github-release@v1
     with:
       github_token: ${{ github.token }}
 ```
