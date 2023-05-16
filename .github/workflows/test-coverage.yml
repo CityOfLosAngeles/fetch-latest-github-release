@@ -17,5 +17,3 @@ jobs:
         uses: mattallty/jest-github-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # needed so we force the tests to run in test mode as if we did not have it, it detects it's inside github actions and runs as if in production.
-          NODE_ENV: test
