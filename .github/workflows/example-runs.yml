@@ -1,4 +1,4 @@
-name: Example Runs
+name: Example Runs & CI Tests
 
 on:
   push:
@@ -32,3 +32,13 @@ jobs:
         run: echo "The latest release tag is $TAG"
         env:
           TAG: ${{ steps.fetch-latest-github-release.outputs.tag_name }}
+  JestTests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - name: Application Tests
+        run: npm test
