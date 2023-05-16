@@ -44,3 +44,7 @@ steps:
     with:
       github_token: ${{ github.token }}
 ```
+
+## CI / Unit Tests
+
+To run the tests locally, run `npm test`.
