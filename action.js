@@ -88,6 +88,9 @@ async function run() {
         tempData = data[releaseAttributes[i]].toString();
         github_output = releaseAttributes[i] + '=' + tempData + "\n" + github_output;
         break;
+      case (releaseAttributes[i] == "body"):
+        github_output = releaseAttributes[i] + '<<EOF' + data[releaseAttributes[i]] + 'EOF' + "\n" + github_output;
+        break;
       default: // ex. assets_url > data.assets_url
         github_output = releaseAttributes[i] + '=' + data[releaseAttributes[i]] + "\n" + github_output;
     }

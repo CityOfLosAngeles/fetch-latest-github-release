@@ -93,7 +93,7 @@ describe('run', () => {
         expect(data).toContain('tag_name=1.2.3');
         expect(data).toContain('target_commitish=production');
         expect(data).toContain('name=v1.2.3');
-        expect(data).toContain('body=Description of the release');
+        expect(data).toContain('body<<EOFDescription of the releaseEOF');
         expect(data).toContain('draft=false');
         expect(data).toContain('prerelease=false');
         expect(data).toContain('author_id=1');
