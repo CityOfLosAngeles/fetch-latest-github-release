@@ -89,7 +89,8 @@ async function run() {
         github_output = releaseAttributes[i] + '=' + tempData + "\n" + github_output;
         break;
       case (releaseAttributes[i] == "body"):
-        github_output = releaseAttributes[i] + '<<EOF' + '\n' + data[releaseAttributes[i]] + '\n' + 'EOF' + "\n" + github_output;
+        let EOF = config.get('EOF'); // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+        github_output = releaseAttributes[i] + '<<' + EOF + '\n' + data[releaseAttributes[i]] + '\n' + EOF + "\n" + github_output;
         break;
       default: // ex. assets_url > data.assets_url
         github_output = releaseAttributes[i] + '=' + data[releaseAttributes[i]] + "\n" + github_output;

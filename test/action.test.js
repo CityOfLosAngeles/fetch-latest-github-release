@@ -93,7 +93,8 @@ describe('run', () => {
         expect(data).toContain('tag_name=1.2.3');
         expect(data).toContain('target_commitish=production');
         expect(data).toContain('name=v1.2.3');
-        //expect(data).toContain('body<<EOFDescription of the releaseEOF');
+        // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+        expect(data).toContain('body<<' + config.get('EOF') + '\n' + 'Description of the release' + '\n' + config.get('EOF') + '\n');
         expect(data).toContain('draft=false');
         expect(data).toContain('prerelease=false');
         expect(data).toContain('author_id=1');
