@@ -1,12 +1,12 @@
-name: Fetch Latest Release
-description: A tiny GitHub action to fetch the latest GitHub release for a given repository
-author: Greg Ziegan
+name: Fetch Latest GitHub Release
+description: A tiny GitHub action to fetch the latest GitHub release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27.
+author: City of Los Angeles
 branding:
   color: green
   icon: tag
 
 runs:
-  using: node12
+  using: node16
   main: action.js
 
 inputs:
