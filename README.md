@@ -2,6 +2,10 @@
 
 A tiny GitHub action to fetch the latest GitHub Release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27.
 
+[![Development Example Test Runs & CI Tests](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=development)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml)
+
+[![Production Example Test Runs & CI Tests](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml)
+
 ## Inputs
 
 | Parameter           | Description                                                                                | Required | Default      |
@@ -35,9 +39,12 @@ A tiny GitHub action to fetch the latest GitHub Release for a given repository. 
 
 ```yaml
 steps:
-  - id: fetch-latest-release
-    uses: thebritican/fetch-latest-release@v1
+  - id: fetch-latest-github-release
+    uses: cityoflosangeles/fetch-latest-github-release@{latest-release} # ex. v1, v2, v3 etc. See https://github.com/CityOfLosAngeles/fetch-latest-github-release/releases
     with:
       github_token: ${{ github.token }}
 ```
 
+## CI / Unit Tests
+
+To run the tests locally, run `npm test`.
