@@ -17,6 +17,10 @@ inputs:
   repo_path:
     description: Provide a "owner/repo" string for fetching from a different repo.
     required: false
+  github_repository:
+    description: Provide a "owner/repo" string for fetching from a different repo. Default will be the current repository ran in.
+    default: ${{ github.repository }}
+    required: false
 outputs:
   url: 
     description: The HTTP URL for this release
