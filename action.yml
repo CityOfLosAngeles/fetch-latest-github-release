@@ -16,6 +16,7 @@ inputs:
     default: ${{ github.token }}
   repo_path:
     description: Provide a "owner/repo" string for fetching from a different repo.
+    default: ${{ github.repository }}
     required: false
   github_repository:
     description: Provide a "owner/repo" string for fetching from a different repo. Default will be the current repository ran in.
