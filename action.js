@@ -3,6 +3,9 @@ const github = require('@actions/github');
 const process = require('process');
 const fs = require('fs/promises');
 const config = require('config');
+const crypto = require('crypto');
+
+const EOF = crypto.randomBytes(16).toString("hex"); // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
 
 const customRepo = (repoPath) => {
   const segments = repoPath.split('/', 2);
@@ -89,7 +92,7 @@ async function run() {
         github_output = releaseAttributes[i] + '=' + tempData + "\n" + github_output;
         break;
       case (releaseAttributes[i] == "body"):
-        let EOF = config.get('EOF'); // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
+        // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
         github_output = releaseAttributes[i] + '<<' + EOF + '\n' + data[releaseAttributes[i]] + '\n' + EOF + "\n" + github_output;
         break;
       default: // ex. assets_url > data.assets_url
@@ -113,3 +116,4 @@ try {
 }
 
 module.exports.run = run;
+module.exports.EOF = EOF;

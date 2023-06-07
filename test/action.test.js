@@ -2,6 +2,7 @@ const action = require('../action');
 const nock = require('nock');
 const fs = require('fs/promises');
 const config = require('config');
+const EOF = action.EOF;
 
 // return mock response with an object with the latest release info
 // view https://docs.github.com/en/rest/reference/repos#get-the-latest-release
@@ -94,7 +95,7 @@ describe('run', () => {
         expect(data).toContain('target_commitish=production');
         expect(data).toContain('name=v1.2.3');
         // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
-        expect(data).toContain('body<<' + config.get('EOF') + '\n' + 'Description of the release' + '\n' + config.get('EOF') + '\n');
+        expect(data).toContain('body<<' + EOF + '\n' + 'Description of the release' + '\n' + EOF + '\n');
         expect(data).toContain('draft=false');
         expect(data).toContain('prerelease=false');
         expect(data).toContain('author_id=1');
