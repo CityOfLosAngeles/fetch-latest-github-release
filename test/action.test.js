@@ -2,6 +2,8 @@ const action = require('../action');
 const nock = require('nock');
 const fs = require('fs/promises');
 const config = require('config');
+const EOF = action.EOF;
+const GITHUB_ACTION_OUTPUT = action.GITHUB_ACTION_OUTPUT;
 
 // return mock response with an object with the latest release info
 // view https://docs.github.com/en/rest/reference/repos#get-the-latest-release
@@ -48,7 +50,7 @@ function latestRelease() {
 async function intitializeGithubOutputFile() {
     try {
         // create the file if it doesn't exist, if it already exists it will replace the contents of the file.
-        await fs.writeFile(config.get('GITHUB_OUTPUT'), "");
+        await fs.writeFile(GITHUB_ACTION_OUTPUT, "");
     } catch (error) {
         console.log('Could not write the GitHub output file for testing. Error is: ' + error);
     }
@@ -56,7 +58,7 @@ async function intitializeGithubOutputFile() {
 
 async function readGithubOutputFile() {
     try {
-        const fileData = await fs.readFile(config.get('GITHUB_OUTPUT'), {encoding: 'utf8'});
+        const fileData = await fs.readFile(GITHUB_ACTION_OUTPUT, {encoding: 'utf8'});
         return fileData;
     } catch (error) {
         console.log('Could not read the GitHub output file for testing. Error is: ' + error);
@@ -94,7 +96,7 @@ describe('run', () => {
         expect(data).toContain('target_commitish=production');
         expect(data).toContain('name=v1.2.3');
         // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings
-        expect(data).toContain('body<<' + config.get('EOF') + '\n' + 'Description of the release' + '\n' + config.get('EOF') + '\n');
+        expect(data).toContain('body<<' + EOF + '\n' + 'Description of the release' + '\n' + EOF + '\n');
         expect(data).toContain('draft=false');
         expect(data).toContain('prerelease=false');
         expect(data).toContain('author_id=1');

@@ -11,7 +11,7 @@ A tiny GitHub action to fetch the latest GitHub Release for a given repository. 
 | Parameter           | Description                                                                                | Required | Default      |
 | ------------------- | ------------------------------------------------------------------------------------------ | -------- | ------------ |
 | `github_token`      | A Github token, usually `${{ github.token }}`.                                             | N        | `${{ github.token }}`  |
-| `repo_path`         | Provide a "owner/repo" string for fetching from a different repo.                          | N        | The current repo       |
+| `repo_path`         | Provide a "owner/repo" string for fetching from a different repo. If not provided the repository the composite action is ran in will be used.                          | N        | The current repo       |
 
 ## Output
 
@@ -37,13 +37,35 @@ A tiny GitHub action to fetch the latest GitHub Release for a given repository. 
 
 ## Usage
 
+**Example 1:** Fetch the latest release from the repository this composite action was ran from.
+```yaml
+steps:
+  - id: fetch-latest-github-release
+    uses: cityoflosangeles/fetch-latest-github-release@{latest-release} # ex. v1, v2, v3 etc. See https://github.com/CityOfLosAngeles/fetch-latest-github-release/releases
+```
+
+**Example 2:** Fetch the latest release from another repository. Make sure the generated token passed in has the appropriate permissions.
+
 ```yaml
 steps:
   - id: fetch-latest-github-release
     uses: cityoflosangeles/fetch-latest-github-release@{latest-release} # ex. v1, v2, v3 etc. See https://github.com/CityOfLosAngeles/fetch-latest-github-release/releases
     with:
       github_token: ${{ github.token }}
+      repo_path: "user/repo-name"
 ```
+
+You will retrieve the output from subsequent GitHub Actions steps like:
+
+```yaml
+- name: "Obtain Latest Tag Name & Run a Cool Process Against It"
+  uses: "hiimbex/some-cool-action@v1"
+  with:
+    version: ${{ steps.fetch-latest-github-release.outputs.tag_name }}
+```
+
+`steps.fetch-latest-github-release.outputs.tag_name` is important, you can fetch other outputs
+that are defined in `action.yml`.
 
 ## CI / Unit Tests
 

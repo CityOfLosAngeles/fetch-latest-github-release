@@ -15,9 +15,9 @@ inputs:
     required: false
     default: ${{ github.token }}
   repo_path:
-    description: Provide a "owner/repo" string for fetching from a different repo.
+    description: Provide a "owner/repo" string for fetching from a different repo. If not provided the repository the composite action is ran in will be used.
+    default: ${{ github.repository }}
     required: false
-
 outputs:
   url: 
     description: The HTTP URL for this release
