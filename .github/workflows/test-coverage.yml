@@ -1,7 +1,7 @@
 # This workflow runs the tests for the application and submits coverage report information to CodeCov on every push and Pull Requests that were open.
 # It uses the Action described here https://github.com/marketplace/actions/codecov.
 
-name: Tests Coverage
+name: Jest Tests & Coverage
 on: [push, pull_request]
 jobs:
   coverage:
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Respository
         uses: actions/checkout@v3
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
             node-version: '16'
       - name: Run the tests # References https://about.codecov.io/blog/measuring-typescript-code-coverage-with-jest-and-github-actions/
