@@ -4,7 +4,7 @@
   "description": "A tiny GitHub action to fetch the latest GitHub Release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27",
   "main": "action.js",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
