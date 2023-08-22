@@ -6,6 +6,8 @@ A tiny GitHub action to fetch the latest GitHub Release for a given repository. 
 
 [![Production Example Test Runs & CI Tests](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml)
 
+[![codecov](https://codecov.io/gh/CityOfLosAngeles/fetch-latest-github-release/graph/badge.svg?token=TDK6PE2M0T)](https://codecov.io/gh/CityOfLosAngeles/fetch-latest-github-release)
+
 ## Inputs
 
 | Parameter           | Description                                                                                | Required | Default      |
