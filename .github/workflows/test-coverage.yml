@@ -1,8 +1,8 @@
-# This workflow runs the tests for the application and comments the coverage report to the pull requests that was open.
-# It uses the Action described here https://github.com/marketplace/actions/jest-annotations-coverage.
+# This workflow runs the tests for the application and submits coverage report information to CodeCov on every push and Pull Requests that were open.
+# It uses the Action described here https://github.com/marketplace/actions/codecov.
 
 name: Tests Coverage
-on: pull_request
+on: [push, pull_request]
 jobs:
   coverage:
     runs-on: ubuntu-22.04
