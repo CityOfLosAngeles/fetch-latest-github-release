@@ -2,9 +2,7 @@
 
 A tiny GitHub action to fetch the latest GitHub Release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27.
 
-[![Development Example Test Runs & CI Tests](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=development)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml)
-
-[![Production Example Test Runs & CI Tests](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml)
+[![Development Example Test Runs](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=development)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml) [![Production Example Test Runs](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/example-runs.yml) [![Development Jest Tests & Coverage](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/test-coverage.yml/badge.svg?branch=development)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/test-coverage.yml) [![Production Jest Tests & Coverage](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/test-coverage.yml/badge.svg?branch=production)](https://github.com/CityOfLosAngeles/fetch-latest-github-release/actions/workflows/test-coverage.yml) [![codecov](https://codecov.io/gh/CityOfLosAngeles/fetch-latest-github-release/graph/badge.svg?token=TDK6PE2M0T)](https://codecov.io/gh/CityOfLosAngeles/fetch-latest-github-release)
 
 ## Inputs
 
