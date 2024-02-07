@@ -1,19 +1,21 @@
-# This workflow runs the tests for the application and comments the coverage report to the pull requests that was open.
-# It uses the Action described here https://github.com/marketplace/actions/jest-annotations-coverage.
+# This workflow runs the tests for the application and submits coverage report information to CodeCov on every push and Pull Requests that were open.
+# It uses the Action described here https://github.com/marketplace/actions/codecov.
 
-name: Tests Coverage
-on: pull_request
+name: Jest Tests & Coverage
+on: [push, pull_request]
 jobs:
   coverage:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Respository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-            node-version: '16'
-      - name: Run Jest Test Coverage
-        uses: mattallty/jest-github-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            node-version: '20'
+      - name: Run the tests # References https://about.codecov.io/blog/measuring-typescript-code-coverage-with-jest-and-github-actions/
+        run: npm test -- --coverage
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
