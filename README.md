@@ -77,4 +77,6 @@ other outputs that are defined in `action.yml`.
 
 ## CI / Unit Tests
 
-To run the tests locally, run `npm test`.
+~To run the tests locally, run `npm test`.~ Currently not supported for the time
+being as mock tests have not be figured out to support the latest GitHub
+dependencies.
