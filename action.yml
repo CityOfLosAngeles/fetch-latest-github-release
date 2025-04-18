@@ -10,7 +10,7 @@ branding:
 
 runs:
   using: node20
-  main: action.js
+  main: dist/index.js
 
 inputs:
   github_token:
