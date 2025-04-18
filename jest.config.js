@@ -21,7 +21,7 @@ export default {
   // },
   extensionsToTreatAsEsm: ['.ts'],
   moduleFileExtensions: ['ts', 'js'],
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
   reporters: ['default'],
   resolver: 'ts-jest-resolver',
   testEnvironment: 'node',
