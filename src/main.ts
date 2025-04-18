@@ -37,7 +37,7 @@ const [owner, repo] = repoInput
 // const octokit = new GitHub({
 //   auth: core.getInput('github_token', { required: true })
 // });
-console.log(core.getInput('github_token'))
+
 const octokit = getOctokit(core.getInput('github_token'))
 
 async function appendGHOutputfile(content: string) {
