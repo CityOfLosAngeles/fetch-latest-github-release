@@ -9,7 +9,7 @@ import { jest } from '@jest/globals'
 import * as core from '../__fixtures__/core.js'
 import * as action from '../src/main.js'
 import nock from 'nock'
-import * as fs from 'fs/promises'
+import { promises as fs } from 'fs'
 const EOF = action.EOF
 const GITHUB_ACTION_OUTPUT = action.GITHUB_ACTION_OUTPUT
 
