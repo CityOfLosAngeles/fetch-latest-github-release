@@ -32,5 +32,3 @@ jobs:
         run: echo "The latest release tag is $TAG"
         env:
           TAG: ${{ steps.fetch-latest-github-release.outputs.tag_name }}
-
-

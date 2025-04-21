@@ -1,5 +1,8 @@
 name: Fetch Latest GitHub Release
-description: A tiny GitHub action to fetch the latest GitHub release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27.
+description:
+  A tiny GitHub action to fetch the latest GitHub release for a given
+  repository. Originally forked from
+  https://github.com/gregziegan/fetch-latest-release on 2023/04/27.
 author: City of Los Angeles
 branding:
   color: green
@@ -7,7 +10,7 @@ branding:
 
 runs:
   using: node20
-  main: action.js
+  main: dist/index.js
 
 inputs:
   github_token:
@@ -15,11 +18,13 @@ inputs:
     required: false
     default: ${{ github.token }}
   repo_path:
-    description: Provide a "owner/repo" string for fetching from a different repo. If not provided the repository the composite action is ran in will be used.
+    description:
+      Provide a "owner/repo" string for fetching from a different repo. If not
+      provided the repository the composite action is ran in will be used.
     default: ${{ github.repository }}
     required: false
 outputs:
-  url: 
+  url:
     description: The HTTP URL for this release
   assets_url:
     description: The REST API HTTP URL for this release's assets
@@ -30,7 +35,8 @@ outputs:
   id:
     description: ''
   node_id:
-    description: The unique identifier for accessing this release in the GraphQL API
+    description:
+      The unique identifier for accessing this release in the GraphQL API
   tag_name:
     description: The name of the release's Git tag
   target_commitish:
@@ -42,7 +48,9 @@ outputs:
   author_id:
     description: ''
   author_node_id:
-    description: The unique identifier for accessing this release's author in the GraphQL API
+    description:
+      The unique identifier for accessing this release's author in the GraphQL
+      API
   author_url:
     description: The REST API HTTP URL for this release's author
   author_login:
@@ -53,4 +61,3 @@ outputs:
     description: ''
   author_site_admin:
     description: Whether or not this user is a site administrator.
-  

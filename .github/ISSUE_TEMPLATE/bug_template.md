@@ -4,7 +4,6 @@ about: Report a Bug
 title: ''
 labels: bug
 assignees: ''
-
 ---
 
 <!---
@@ -22,11 +21,11 @@ filtered by the "bug" and verify the issue you're about to submit isn't a duplic
 
 <!-- Describe how one can reproduce the issue - this is very important. Please use an ordered list. -->
 
-### What is the current *bug* behavior?
+### What is the current _bug_ behavior?
 
 <!-- Describe what actually happens. -->
 
-### What is the expected *correct* behavior?
+### What is the expected _correct_ behavior?
 
 <!-- Describe what you should see instead. -->
 
