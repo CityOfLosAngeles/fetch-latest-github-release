@@ -27,3 +27,5 @@ const config = {
 }
 
 export default config
+
+// NCC is now used for bundling. This file is no longer needed, but kept for reference.
