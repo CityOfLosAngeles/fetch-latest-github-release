@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import { getOctokit } from '@actions/github'
-import * as fs from 'fs/promises'
+import { promises as fs } from 'fs'
 import * as crypto from 'crypto'
 
 const EOF = crypto.randomBytes(16).toString('hex') // see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#multiline-strings

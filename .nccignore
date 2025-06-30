@@ -1,0 +1,15 @@
+__tests__/
+__fixtures__/
+coverage/
+badges/
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+.eslintrc*
+jest.config.*
+rollup.config.*
+tsconfig.*
+README.md
+SECURITY.md
+LICENSE.md
