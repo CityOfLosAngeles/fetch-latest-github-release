@@ -3,7 +3,6 @@
   "description": "A tiny GitHub action to fetch the latest GitHub Release for a given repository. Originally forked from https://github.com/gregziegan/fetch-latest-release on 2023/04/27",
   "version": "3.0.0",
   "author": "City of Los Angeles",
-  "type": "module",
   "private": true,
   "homepage": "https://github.com/CityOfLosAngeles/fetch-latest-github-release#readme",
   "repository": {
