@@ -39,7 +39,8 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
-    "config": "^3.3.12"
+    "config": "^3.3.12",
+    "semver": "^7.6.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.8",
