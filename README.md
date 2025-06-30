@@ -80,3 +80,49 @@ other outputs that are defined in `action.yml`.
 ~To run the tests locally, run `npm test`.~ Currently not supported for the time
 being as mock tests have not be figured out to support the latest GitHub
 dependencies.
+
+# Build Instructions
+
+This project uses [Vercel NCC](https://github.com/vercel/ncc) to bundle the
+GitHub Action into a single distributable file.
+
+## Building the Action
+
+To build the action, run:
+
+```
+npm run build
+```
+
+This will:
+
+- Use NCC to bundle all dependencies from `src/index.ts` into a single file at
+  `dist/index.cjs`.
+- Generate a source map for debugging.
+
+## Notes
+
+- The output file is `dist/index.cjs` (CommonJS format).
+- You do **not** need to ship `node_modules` with your action; everything is
+  bundled.
+- If you change the source code, always re-run `npm run build` before committing
+  or releasing.
+
+## Example package.json scripts
+
+```
+"scripts": {
+  "build": "ncc build src/index.ts -o dist --source-map && mv dist/index.js dist/index.cjs",
+  ...
+}
+```
+
+## Referencing in action.yml
+
+In your `action.yml`, set the entrypoint to `dist/index.cjs`:
+
+```
+runs:
+  using: 'node20'
+  main: 'dist/index.cjs'
+```
