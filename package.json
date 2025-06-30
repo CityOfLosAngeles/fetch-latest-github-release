@@ -23,7 +23,7 @@
   },
   "scripts": {
     "bundle": "npm run format:write && npm run package",
-    "build": "ncc build src/index.ts -o dist --source-map",
+    "build": "ncc build src/index.ts --source-map -o dist/index.cjs",
     "ci-test": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 npx jest",
     "coverage": "npx make-coverage-badge --output-path ./badges/coverage.svg",
     "format:write": "npx prettier --write .",
