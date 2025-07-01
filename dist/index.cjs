@@ -30096,8 +30096,9 @@ async function run() {
                             '\n' +
                             github_output;
             }
-            await appendGHOutputfile(github_output);
         }
+        // Write the final output once after processing all attributes
+        await appendGHOutputfile(github_output);
         // const ms: string = core.getInput('milliseconds')
         // // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
         // core.debug(`Waiting ${ms} milliseconds ...`)
