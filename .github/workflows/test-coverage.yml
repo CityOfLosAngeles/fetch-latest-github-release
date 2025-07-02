@@ -2,6 +2,8 @@
 # It uses the Action described here https://github.com/marketplace/actions/codecov.
 
 name: Jest Tests & Coverage
+permissions:
+  contents: read
 on: [push, pull_request]
 jobs:
   coverage:
