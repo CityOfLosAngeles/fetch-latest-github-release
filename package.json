@@ -51,7 +51,7 @@
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/config": "^3.3.5",
     "@types/jest": "^29.5.14",
-    "@types/node": "^20.17.30",
+    "@types/node": "^24.4.0",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "@vercel/ncc": "^0.38.3",
