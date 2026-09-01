@@ -123,6 +123,6 @@ In your `action.yml`, set the entrypoint to `dist/index.cjs`:
 
 ```
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.cjs'
 ```
