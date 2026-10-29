@@ -77,9 +77,9 @@ other outputs that are defined in `action.yml`.
 
 ## CI / Unit Tests
 
-~To run the tests locally, run `npm test`.~ Currently not supported for the time
-being as mock tests have not be figured out to support the latest GitHub
-dependencies.
+To run the tests locally, run `npm test`. The unit tests have been updated to
+work with the latest GitHub Actions dependencies using proper mocking strategies
+for ESM modules.
 
 # Build Instructions
 
@@ -123,6 +123,6 @@ In your `action.yml`, set the entrypoint to `dist/index.cjs`:
 
 ```
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.cjs'
 ```

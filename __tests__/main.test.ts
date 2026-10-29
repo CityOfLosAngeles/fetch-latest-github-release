@@ -7,14 +7,30 @@
  */
 import { jest } from '@jest/globals'
 import * as core from '../__fixtures__/core.js'
-import * as action from '../src/main.js'
-import nock from 'nock'
 import { promises as fs } from 'fs'
-const EOF = action.EOF
-const GITHUB_ACTION_OUTPUT = action.GITHUB_ACTION_OUTPUT
 
 // Mocks should be declared before the module being tested is imported.
 jest.unstable_mockModule('@actions/core', () => core)
+
+// Mock the @actions/github module
+jest.unstable_mockModule('@actions/github', () => ({
+  getOctokit: jest.fn(() => ({
+    rest: {
+      repos: {
+        getLatestRelease: jest.fn(() =>
+          Promise.resolve({
+            data: latestRelease()
+          })
+        )
+      }
+    }
+  }))
+}))
+
+// Import the module after mocking is set up
+const action = await import('../src/main.js')
+const EOF = action.EOF
+const GITHUB_ACTION_OUTPUT = action.GITHUB_ACTION_OUTPUT
 
 // jest.mock('config', () => ({
 //   get: jest.fn((key: 'GITHUB_OUTPUT' | 'GH_REPOSITORY') => {
@@ -79,20 +95,7 @@ function latestRelease() {
   }
 }
 
-function mockGitHubAuthentication() {
-  nock('https://api.github.com').get('/user').reply(200, {
-    login: 'mock-user',
-    id: 123456,
-    node_id: 'MDQ6VXNlcjEyMzQ1Ng==',
-    avatar_url: 'https://avatars.githubusercontent.com/u/123456?v=4',
-    url: 'https://api.github.com/users/mock-user',
-    html_url: 'https://github.com/mock-user',
-    type: 'User',
-    site_admin: false
-  })
-}
-
-async function intitializeGithubOutputFile() {
+async function initializeGithubOutputFile() {
   try {
     // create the file if it doesn't exist, if it already exists it will replace the contents of the file.
     if (GITHUB_ACTION_OUTPUT) {
@@ -124,23 +127,18 @@ async function readGithubOutputFile() {
 }
 
 describe('run', () => {
-  beforeEach(() => {
-    intitializeGithubOutputFile()
-      .then(() => {
-        nock.disableNetConnect()
-        mockGitHubAuthentication()
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  beforeEach(async () => {
+    // Initialize output file first
+    await initializeGithubOutputFile()
   })
 
   test('should fetch the latest release details', async () => {
-    const mock = nock('https://api.github.com')
-      .get('/repos/hiimbex/testing-things/releases/latest')
-      .reply(200, latestRelease())
+    // Reset mock calls
+    core.setFailed.mockClear()
+    core.info.mockClear()
 
     await action.run()
+
     const data = await readGithubOutputFile()
 
     // GitHub expects the output to be in the format of key=value, see https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
@@ -177,11 +175,7 @@ describe('run', () => {
     expect(data).toContain('author_type=User')
     expect(data).toContain('author_site_admin=false')
 
-    expect(mock.pendingMocks()).toStrictEqual([])
-  })
-
-  afterEach(() => {
-    nock.cleanAll()
-    nock.enableNetConnect()
+    // Verify no errors occurred
+    expect(core.setFailed).not.toHaveBeenCalled()
   })
 })
